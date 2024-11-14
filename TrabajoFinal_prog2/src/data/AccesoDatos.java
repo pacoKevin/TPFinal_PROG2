@@ -26,9 +26,10 @@ public class AccesoDatos<E> {
 		List<E> list = new ArrayList<E>();
 		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(this.patch))){
 			list = (List<E>) ois.readObject();
-		}catch (IOException | ClassNotFoundException e) {
-			// TODO: handle exception	
-			e.printStackTrace();
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error al Acceder al archivo: "+e.getMessage());
+			//e.printStackTrace();
 		}
 		return list;
 	}

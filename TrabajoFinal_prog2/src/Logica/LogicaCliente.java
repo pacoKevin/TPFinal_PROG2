@@ -36,11 +36,25 @@ public class LogicaCliente {
 	}
    }
    
-   public List<Cliente> listarClientes(){	
-	   List<Cliente> clientes= this.datos.listObjects();  
-		  
-		   return clientes;	
+   public Cliente buscarCliente(int dni) {
+	   try {
+		    for (Cliente cli :(List<Cliente>) this.datos.listObjects()) {
+				if(cli.getDni()==dni) {
+					return cli;
+				}
+			}		   
+		   return null;
+	} catch (Exception e) {
+		// TODO: handle exception
+		 throw new RuntimeException("Error al Agregar Cliente: "+e.getMessage());
+		
+	}
    }
+   
+    public List<Cliente> listarClientes(){	
+	   List<Cliente> clientes= this.datos.listObjects();  		  
+		   return clientes;	
+     }
    
    public void MostrarClientes() {
 	   List<Cliente> clientes= this.datos.listObjects();

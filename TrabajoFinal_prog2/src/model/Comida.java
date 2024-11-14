@@ -4,10 +4,8 @@ public class Comida {
 
 	private String nombre;
 	private Receta receta;
-	public Comida(String nombre, Receta receta) {
+	public Comida() {
 		super();
-		this.nombre = nombre;
-		this.receta = receta;
 	}
 	public String getNombre() {
 		return nombre;

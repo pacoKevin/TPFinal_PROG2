@@ -6,12 +6,53 @@ import Logica.LogicaIngrediente;
 import model.Cliente;
 import model.Cocina;
 import model.Ingrediente;
+import model.Receta;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	/* LogicaIngrediente li = new LogicaIngrediente();	
+		int opcion;
+
+        do {          
+            menuPrincipal();
+            opcion = Helper.getInteger("Seleccione una opcion: ");
+
+            switch (opcion) {
+                case 1: MainCliente.menu();
+                    break;
+                case 2:
+                    //menuPedidos();
+                	System.out.println("opcion 2");
+                    break;
+                case 3:
+                    //menuComidas();
+                	System.out.println("opcion 3");
+                    break;
+                case 4: MainReceta.Principal();
+                    break;
+                case 5: MainIngrediente.principal();
+                    break;
+                case 6:
+                    //menuSecciones();
+                	System.out.println("opcion 6");
+                    break;
+                case 7:
+                    //calculoPrecios();
+                	System.out.println("opcion 7");
+                    break;
+                case 0:
+                    System.out.println("Saliendo del sistema...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        } while (opcion!=0);
+
+		
+		
+	   
+		/* LogicaIngrediente li = new LogicaIngrediente();	
 		
       Ingrediente i = new Ingrediente();
       i.setCosto(34);
@@ -34,7 +75,7 @@ public class Main {
       
       li.MostrarIngredientes();*/
 		
-	LogicaCliente lc = new LogicaCliente();
+/*	LogicaCliente lc = new LogicaCliente();
 	
 	lc.limpiarClientes();
 	
@@ -64,61 +105,23 @@ public class Main {
 	
 	lcocina.guardarSeccion(seccion1);
 	
-	lcocina.MostrarSecciones();
-		
-		 /*int opcion;
-
-	        do {
-	            System.out.println("\n--- MENÚ PRINCIPAL ---");
-	            System.out.println("1. Gestión de Clientes");
-	            System.out.println("2. Gestión de Pedidos");
-	            System.out.println("3. Gestión de Comidas");
-	            System.out.println("4. Gestión de Recetas");
-	            System.out.println("5. Gestión de Ingredientes");
-	            System.out.println("6. Gestión de Secciones de Cocina");
-	            System.out.println("7. Cálculo de Precios");
-	            System.out.println("8. Salir");
-	            System.out.print("Seleccione una opción: ");
-	            opcion = Helper.getInteger("Seleccione una opcion: ");
-
-	            switch (opcion) {
-	                case 1:
-	                    //menuClientes();
-	                	System.out.println("opcion 1");
-	                    break;
-	                case 2:
-	                    //menuPedidos();
-	                	System.out.println("opcion 2");
-	                    break;
-	                case 3:
-	                    //menuComidas();
-	                	System.out.println("opcion 3");
-	                    break;
-	                case 4:
-	                    //menuRecetas();
-	                	System.out.println("opcion 4");
-	                    break;
-	                case 5:
-	                    //menuIngredientes();
-	                	System.out.println("opcion 5");
-	                    break;
-	                case 6:
-	                    //menuSecciones();
-	                	System.out.println("opcion 6");
-	                    break;
-	                case 7:
-	                    //calculoPrecios();
-	                	System.out.println("opcion 7");
-	                    break;
-	                case 8:
-	                    System.out.println("Saliendo del sistema...");
-	                    break;
-	                default:
-	                    System.out.println("Opción no válida. Intente de nuevo.");
-	            }
-	        } while (opcion != 8);*/
+	lcocina.MostrarSecciones();*/
 
     }
+	
+	public static void menuPrincipal() {
+	  System.out.println("""
+	  	    ***** MENÚ PRINCIPAL*****
+            1) Gestión de Clientes.
+            2) Gestión de Pedidos.
+            3) Gestión de Comidas.
+            4) Gestión de Recetas.
+            5) Gestión de Ingredientes.
+            6) Gestión de Secciones de Cocina.
+            7) Cálculo de Precios.
+            0) Salir 
+	  		""");
+	}
 
 }
 

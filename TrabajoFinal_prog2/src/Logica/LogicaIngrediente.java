@@ -1,6 +1,7 @@
 package Logica;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import data.AccesoDatos;
@@ -34,6 +35,55 @@ public class LogicaIngrediente {
 		System.out.println("Error al Agregar Lote: "+e.getMessage());
 		return false;
 	}
+   }
+   
+   public void listarIngredientesDisponibles(){	
+	    try {
+			  List<Ingrediente> list = new ArrayList<Ingrediente>();
+			  for (Ingrediente i :(List<Ingrediente>) this.datos.listObjects()) {
+				   if(i.getStock()>0) {
+					   System.out.println(i.toString());
+				   }
+			      }
+			 
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new RuntimeException("Error al lista ing disponibles.."+e.getMessage());
+		}   
+   }
+   
+   public void actualizacionStock(String nombre, int cantidad,String opcion) {
+	   try {
+		  List<Ingrediente> list = this.datos.listObjects();
+		  for (Ingrediente i: list) {
+			    if(i.getNombre().equals(nombre)) {
+			    	if(opcion.equals("agregar"))
+			    	     i.setStock(i.getStock()+cantidad);
+			    	if(opcion.equals("quitar"))
+			    		 i.setStock(i.getStock()-cantidad);
+			    }
+		    }
+		  this.datos.saveObject(list);
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+   }
+   
+   public Ingrediente buscarIngrediente(String nombre) {
+	   
+	   try {
+		    Ingrediente ing = new Ingrediente();
+		    for (Ingrediente i :(List<Ingrediente>) this.datos.listObjects()) {
+				if(i.getNombre().equals(nombre)) {
+				   return i;
+				}					
+			}
+		    return null;
+	} catch (Exception e) {
+		// TODO: handle exception
+		throw new RuntimeException("Error al buscar ing..."+e.getMessage());
+	}
+	   
    }
    
    public List<Ingrediente> listarIngredientes(){	
