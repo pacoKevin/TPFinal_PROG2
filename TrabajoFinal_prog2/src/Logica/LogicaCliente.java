@@ -48,5 +48,18 @@ public class LogicaCliente {
 			System.out.println(c.toString());		   
 		}
 			
+   }
+   
+   public boolean limpiarClientes() {
+	   try {
+		   List<Cliente> clientes= this.datos.listObjects();
+		   clientes.clear();
+		   this.datos.saveObject(clientes);
+		   return true;
+	} catch (Exception e) {
+		// TODO: handle exception
+		System.out.println("Error al Agregar Cliente: "+e.getMessage());
+		return false;
 	}
+   }
 }
