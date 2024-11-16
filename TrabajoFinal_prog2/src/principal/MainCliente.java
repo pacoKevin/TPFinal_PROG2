@@ -38,7 +38,7 @@ public class MainCliente {
     	 return cli;
      }
      
-    private static int validarDni() {
+    public static int validarDni() {
     	while(true) {
     		int dni = Helper.getInteger("Ingre DNI: ");
     		if(dni>11111111 && dni<99999999) {

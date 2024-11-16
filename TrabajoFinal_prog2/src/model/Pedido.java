@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Pedido {
+public class Pedido implements Serializable{
 
 	private List<Comida> comidas;
 	private String estado;
@@ -36,9 +37,16 @@ public class Pedido {
 	}
 	public void completarPedido() {
 		this.estado = "Completado";
+	}	
+	
+	public Cliente getCliente() {
+		return cliente;
 	}
-	
-	
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	@Override
 	public String toString() {
 		return "Pedido [comidas=" + comidas + ", estado=" + estado + ", cliente=" + cliente + "]";

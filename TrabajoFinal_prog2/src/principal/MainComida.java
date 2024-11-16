@@ -26,7 +26,7 @@ public class MainComida {
 					case 1: {
 						      lc.guardarComida(completarDatos());
 					        break;}
-					case 2: { lc.mostrarComidas();
+					case 2: { lc.mostrarComidas();					
 				            break;}					
 					case 0: {break;}
 					default:

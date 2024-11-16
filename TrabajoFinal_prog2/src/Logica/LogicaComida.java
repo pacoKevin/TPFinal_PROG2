@@ -52,6 +52,7 @@ public class LogicaComida {
 	    if(!comidas.isEmpty()) {	
 			for (Comida comida:comidas) {
 					System.out.println(comida.toString());
+					System.out.println("Costo total: "+comida.costoComida());
 				}	
 	    }else {
 	    	System.out.println("No hay Comidas");

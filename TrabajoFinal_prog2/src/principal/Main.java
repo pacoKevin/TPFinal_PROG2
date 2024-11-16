@@ -21,13 +21,9 @@ public class Main {
             switch (opcion) {
                 case 1: MainCliente.menu();
                     break;
-                case 2:
-                    //menuPedidos();
-                	System.out.println("opcion 2");
+                case 2: MainPedido.Principal();
                     break;
-                case 3:
-                    //menuComidas();
-                	System.out.println("opcion 3");
+                case 3: MainComida.Principal();
                     break;
                 case 4: MainReceta.Principal();
                     break;

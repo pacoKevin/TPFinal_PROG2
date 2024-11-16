@@ -66,6 +66,7 @@ public class LogicaIngrediente {
 		  this.datos.saveObject(list);
 	} catch (Exception e) {
 		// TODO: handle exception
+		throw new RuntimeException("Error al actualizar Stock..."+e.getMessage());
 	}
    }
    

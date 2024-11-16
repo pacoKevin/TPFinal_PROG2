@@ -96,23 +96,20 @@ public class Receta implements Serializable{
 		return costo;
 	}
 	
+	
+	
+	
 	@Override
 	public String toString() {
-		String complej;
+		String complej="";
 		if(this.complejidad==1) 
 			complej="Baja";
 		if(this.complejidad==2) 
 			complej="Media";
 		if(this.complejidad==3) 
 			complej="Alta";
-		
-		return "****RECETA****\n" +
-	           "Nombre: " + nombre + "\n" + 
-			   "Tiempo de Cocción: " + tiempoCoccion + "\n" + 
-	           "Tipo: " + tipo + "\n" + 
-			   "Modo de Preparación: " + modoPreparacion + "\n" + 
-	           "Complejidad: " + complejidad + "\n" + 
-			   "Ingredientes: " + ingredientes + "\n" + 
-	           "Recetas: " + recetas;
+		return "Receta [nombre=" + nombre + ", tiempoCoccion=" + tiempoCoccion + ", tipo=" + tipo + ", modoPreparacion="
+				+ modoPreparacion + ", complejidad=" + complej + ", ingredientes=" + ingredientes + ", recetas="
+				+ recetas + "]";
 	}
 }

@@ -53,13 +53,36 @@ public class MainReceta {
 		if(op.equals("nuevo")) {
 			rec.setNombre(validarNombre());
 		}		      
-		rec.setTipo(Helper.getString("Ingrese tipo de receta: "));
+		rec.setTipo(validarTipoReceta());
 		rec.setModoPreparacion(Helper.getString("Ingrese modo de preparacion: "));
 		rec.setTiempoCoccion(Helper.getInteger("Ingrese tiempo de cocción: "));
 		rec.setComplejidad(ingresarComplejidad());
 		rec.setIngredientes(ingresarIngredientes());
 		rec.setRecetas(ingresarReceta());		
 		return rec;		
+	}
+	
+	private static String validarTipoReceta() {
+	   int op=0;
+	   do {
+			System.out.println("""
+					****TIPOS****
+					1) horno.
+					2) gurmet.
+					3) ensalada.
+					4) postre.				
+					""");
+			op=Helper.getInteger("Ingrese Opcion: ");
+			switch (op) {
+				case 1: { return "horno";}
+				case 2: { return "gurmet";}
+				case 3: { return "ensalada";}
+				case 4: { return "postre";}
+				default:{ op=239;
+				System.out.println("Opcion Incorrecta...");}
+				}
+	   }while(op!=0);
+       return "";
 	}
 	
 	private static String validarNombre() {
