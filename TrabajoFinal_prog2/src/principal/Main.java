@@ -34,10 +34,9 @@ public class Main {
                 	System.out.println("opcion 6");
                     break;
                 case 7:
-                    //calculoPrecios();
-                	System.out.println("opcion 7");
+                         MainCalculoPrecios.calcularPrecioPedido();
                     break;
-                case 0:
+                case 0: 
                     System.out.println("Saliendo del sistema...");
                     break;
                 default:
