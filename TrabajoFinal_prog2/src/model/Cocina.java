@@ -78,6 +78,17 @@ public class Cocina implements Serializable{
 		return pedido;
 	}
 	
+	public Pedido buscarPedidoPendiente(Cliente cliente, Comida comida) {
+		Pedido pedido = null;
+		for (Pedido ped : pedidosPendientes) {
+			if(ped.getCliente().equals(cliente) && ped.getComidas().contains(comida)) {
+				pedido = ped;
+				break;
+			}
+		}
+		return pedido;
+	}
+	
 	// Lista de Ingredientes
 	public void agregarIngrediente(Ingrediente ingrediente) {
 		ingredientes.add(ingrediente);			
@@ -96,6 +107,14 @@ public class Cocina implements Serializable{
 			}
 		}
 		return ingrediente;
+	}
+	
+	// Disponibilidad de pedidos
+	public boolean puedeRecibirPedidos() {
+		if(pedidosPendientes.size() >= limite) {
+			return false;
+		}
+		return true;
 	}
 	
 	

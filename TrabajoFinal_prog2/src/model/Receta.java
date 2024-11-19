@@ -72,14 +72,12 @@ public class Receta implements Serializable{
 	}
 	
 	
-	public boolean disponible() {
-		LogicaIngrediente li = new LogicaIngrediente();
+	public boolean disponible(Cocina seccionCocina) {
 		Enumeration<Ingrediente> keys = this.ingredientes.keys();
 		while(keys.hasMoreElements()) {		  
 			 Ingrediente i = keys.nextElement();
-			 Ingrediente buscarIngrediente = li.buscarIngrediente(i.getNombre());
-			 if(buscarIngrediente.getStock() < this.ingredientes.get(i)) 
-				   return false;
+			 Ingrediente buscarIngrediente = seccionCocina.buscarIngrediente(i.getNombre());
+			 if(buscarIngrediente.getStock() < this.ingredientes.get(i)) return false;
 		}
 	   return true;
 	}
@@ -93,6 +91,11 @@ public class Receta implements Serializable{
 			   int cantidadIngrdientes= this.ingredientes.get(i);	
 		       costo+=(i.getCosto()*cantidadIngrdientes);
 		}
+		 if(recetas.size() > 0) {
+			 for (Receta receta : recetas) {
+				costo += receta.costoIngredientes();
+			}
+		 }
 		return costo;
 	}
 	

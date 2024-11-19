@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido implements Serializable{
@@ -11,6 +12,7 @@ public class Pedido implements Serializable{
 	
 	public Pedido() {
 		super();
+		comidas = new ArrayList<Comida>();
 	}
 	
 	// GETTERS & SETTERS
@@ -28,6 +30,14 @@ public class Pedido implements Serializable{
 		this.estado = estado;
 	}
 	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	// Another methods
 	public void pedidoPendiente() {
 		this.estado = "Pendiente";
@@ -37,16 +47,12 @@ public class Pedido implements Serializable{
 	}
 	public void completarPedido() {
 		this.estado = "Completado";
+	}
+	
+	public void agregarComida(Comida comida) {
+		this.comidas.add(comida);
 	}	
 	
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	@Override
 	public String toString() {
 		return "Pedido [comidas=" + comidas + ", estado=" + estado + ", cliente=" + cliente + "]";

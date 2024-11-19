@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import data.AccesoDatos;
+import model.Cliente;
 import model.Comida;
 import model.Receta;
 
@@ -58,4 +59,17 @@ public class LogicaComida {
 	    	System.out.println("No hay Comidas");
 	    }
 	}	
+    
+    public boolean limpiarComida() {
+ 	   try {
+ 		   List<Comida> comidas = this.datos.listObjects();
+ 		   comidas.clear();
+ 		   this.datos.saveObject(comidas);
+ 		   return true;
+ 	} catch (Exception e) {
+ 		// TODO: handle exception
+ 		System.out.println("Error al eliminar comidas: "+e.getMessage());
+ 		return false;
+ 	}
+    }
 }

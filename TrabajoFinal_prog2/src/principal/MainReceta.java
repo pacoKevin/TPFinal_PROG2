@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 import Logica.LogicaIngrediente;
 import Logica.LogicaReceta;
+import model.Cocina;
 import model.Ingrediente;
 import model.Receta;
 
 public class MainReceta {
 	
-	private static LogicaIngrediente li=new LogicaIngrediente();
 	private static LogicaReceta lr= new LogicaReceta();
 
 	public static void Principal() {
@@ -63,26 +63,8 @@ public class MainReceta {
 	}
 	
 	private static String validarTipoReceta() {
-	   int op=0;
-	   do {
-			System.out.println("""
-					****TIPOS****
-					1) horno.
-					2) gurmet.
-					3) ensalada.
-					4) postre.				
-					""");
-			op=Helper.getInteger("Ingrese Opcion: ");
-			switch (op) {
-				case 1: { return "horno";}
-				case 2: { return "gurmet";}
-				case 3: { return "ensalada";}
-				case 4: { return "postre";}
-				default:{ op=239;
-				System.out.println("Opcion Incorrecta...");}
-				}
-	   }while(op!=0);
-       return "";
+	   Cocina seccion = MainCocina.seleccionarSeccion("Elija el tipo de receta: ", "Elija un tipo de receta existente.");
+	   return seccion.getEspecialidad();
 	}
 	
 	private static String validarNombre() {
@@ -117,11 +99,13 @@ public class MainReceta {
 	
 	private static Dictionary<Ingrediente,Integer> ingresarIngredientes(){
 		Dictionary<Ingrediente,Integer> dicIngredientes=new Hashtable<Ingrediente,Integer>();
-		li.MostrarIngredientes();
+		Cocina seccionCocina = MainCocina.seleccionarSeccion();
+		LogicaIngrediente li = new LogicaIngrediente(seccionCocina);
+		li.mostrarIngredientes();
 		char op='n';
 		do {
 			String nombreIngrediente= Helper.getString("Ingrese Ingrediente: ");
-			Ingrediente ing = li.buscarIngrediente(nombreIngrediente);
+			Ingrediente ing = seccionCocina.buscarIngrediente(nombreIngrediente);
 			if(ing!=null) {
 				int cantidad = Helper.getInteger("Ingrese cantidad: ");
 				dicIngredientes.put(ing,cantidad);

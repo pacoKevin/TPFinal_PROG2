@@ -61,15 +61,20 @@ public class MainComida {
 	
 	 private static Receta ingresarReceta(){
 		  lr.mostrarRecetas();
-		  char op='n';
-		  Receta rec= new Receta();
+		  Receta rec= null;
 		  while(true) {
-			  String nombreReceta= Helper.getString("Ingrese Receta: ");
+			  String nombreReceta= Helper.getString("Ingrese Receta: (para cancelar ingrese 'salir')");
 				rec = lr.buscarReceta(nombreReceta);
 				if(rec!=null) {
 					return rec;
-				}else
+				}
+				if(nombreReceta.equals("salir")){
+					break;
+				} else {
 					System.out.println("Receta no existe...");	
+				}
+				
 		  }
+		  return null;
 	  }
 }

@@ -24,6 +24,7 @@ public class MainCocina {
 	    	 		1) Agregar Nueva Seccion.
 	    	 		2) Mostrar Secciones.
 	    	 		3) Limpiar Secciones.
+	    	 		4) Gestion Ingredientes.
 	    	 		0) Salir.
 	    	 		""");
 	    	 op = Helper.getInteger("Ingrese Opcion: ");
@@ -40,6 +41,10 @@ public class MainCocina {
 					case 3: {
 						      	lc.limpiarSecciones();
 						      	System.out.println("Secciones eliminadas");
+				            	break;
+				            }
+					case 4: {
+						      	MainIngrediente.principal(seleccionarSeccion());
 				            	break;
 				            }
 					case 0: {break;}
@@ -66,9 +71,55 @@ public class MainCocina {
 			ingrediente.setNombre(Helper.getString("Ingrese el nombre del ingrediente: "));
 			ingrediente.setCosto(Helper.getDouble("Ingrese su costo: "));
 			ingrediente.setStock(Helper.getInteger("Ingrese el stock: "));
+			
 			listaIngredientes.add(ingrediente);
+			System.out.println("Ingrediente añadido...");
 		}
 		return listaIngredientes;
+	}
+	
+	public static Cocina seleccionarSeccion() {
+		Cocina seccion = null;
+		
+		List<Cocina> secciones = lc.listarSecciones();
+		
+		while (true) {
+			System.out.println("Secciones:  ");
+			for (int i = 1; i <= secciones.size(); i++) {
+				System.out.println(i + ") " + secciones.get(i-1).getEspecialidad());
+			}
+			
+			int opcion = Helper.getInteger("Elija una seccion: ");
+			if(opcion > 0 && opcion <= secciones.size()) {
+				seccion = secciones.get(opcion-1);
+				break;
+			}
+			System.out.println("Elija alguna seccion existente.");
+		} 
+		
+		return seccion;
+	}
+	
+	public static Cocina seleccionarSeccion(String inputMessage, String errorMessage) {
+		Cocina seccion = null;
+		
+		List<Cocina> secciones = lc.listarSecciones();
+		
+		while (true) {
+			System.out.println("Secciones:  ");
+			for (int i = 1; i <= secciones.size(); i++) {
+				System.out.println(i + ") " + secciones.get(i-1).getEspecialidad());
+			}
+			
+			int opcion = Helper.getInteger(inputMessage);
+			if(opcion > 0 && opcion <= secciones.size()) {
+				seccion = secciones.get(opcion-1);
+				break;
+			}
+			System.out.println(errorMessage);
+		} 
+		
+		return seccion;
 	}
 	
 

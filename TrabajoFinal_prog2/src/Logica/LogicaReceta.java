@@ -5,16 +5,16 @@ import java.util.Enumeration;
 import java.util.List;
 
 import data.AccesoDatos;
+import model.Cocina;
 import model.Ingrediente;
+import model.Pedido;
 import model.Receta;
 
 public class LogicaReceta {
    
 	private AccesoDatos datos;
-	private LogicaIngrediente li;
 	
 	public LogicaReceta() {
-		li= new LogicaIngrediente();
 		try {	
 			File file= new File("Recetas.txt");
 	        if(!file.exists()) {
@@ -51,9 +51,10 @@ public class LogicaReceta {
 		}
 	}
 	
-	public boolean consumirReceta(String nombre) {
+	public boolean consumirReceta(String nombre, Cocina seccionCocina) {
 		try {
-			  Receta buscarReceta = buscarReceta(nombre);			  
+			  Receta buscarReceta = buscarReceta(nombre);
+			  LogicaIngrediente li = new LogicaIngrediente(seccionCocina);
 			  Enumeration<Ingrediente> ingredientesKeys= buscarReceta.getIngredientes().keys();
 			  while(ingredientesKeys.hasMoreElements()) {				
 				  Ingrediente i = ingredientesKeys.nextElement();
@@ -92,5 +93,18 @@ public class LogicaReceta {
 	    }else {
 	    	System.out.println("No hay recetas");
 	    }
-	}	   
+	}
+	
+	public boolean limpiarRecetas() {
+		   try {
+			   List<Receta> recetas = this.datos.listObjects();
+			   recetas.clear();
+			   this.datos.saveObject(recetas);
+			   return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error al eliminar recetas: "+e.getMessage());
+			return false;
+		}
+	}
 }
