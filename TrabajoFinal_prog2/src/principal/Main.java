@@ -31,7 +31,8 @@ public class Main {
                     break;
                 case 6:
                     //menuSecciones();
-                	System.out.println("opcion 6");
+                		
+                		MainCocina.Principal();
                     break;
                 case 7:
                          MainCalculoPrecios.calcularPrecioPedido();
