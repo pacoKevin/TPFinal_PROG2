@@ -1,6 +1,7 @@
 package Logica;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import data.AccesoDatos;
@@ -42,6 +43,21 @@ public class LogicaPedido {
 		    	}
 		    }
 		  return null; 
+	   }catch(Exception e) {
+		   throw new RuntimeException("Error al buscar pedido..."+e.getMessage());
+	   }
+   }
+   
+   public List<Pedido> buscarPedidos(int dni) {
+	   try {
+		    List<Pedido> list = this.datos.listObjects();
+		    List<Pedido> listP = new ArrayList<Pedido>();
+		    for(Pedido p: list) {
+		    	if(p.getCliente().getDni()==dni && !p.getEstado().equals("Completado")) {
+		    		listP.add(p);
+		    	}
+		    }
+		  return listP; 
 	   }catch(Exception e) {
 		   throw new RuntimeException("Error al buscar pedido..."+e.getMessage());
 	   }

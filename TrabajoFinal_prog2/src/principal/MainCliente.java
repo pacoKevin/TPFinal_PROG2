@@ -5,7 +5,7 @@ import model.Cliente;
 
 public class MainCliente {
 
-	private static LogicaCliente lc=new LogicaCliente();
+	public static LogicaCliente lc=new LogicaCliente();
 	
      public static void menu() {
     	int op=0;
@@ -30,7 +30,7 @@ public class MainCliente {
     	}while(op!=0);
      }
      
-     private static Cliente completarDatos() {
+     public static Cliente completarDatos() {
     	 Cliente cli = new Cliente();
     	 cli.setDni(validarDni());
     	 cli.setNombre(Helper.getString("Ingrese nombre: "));

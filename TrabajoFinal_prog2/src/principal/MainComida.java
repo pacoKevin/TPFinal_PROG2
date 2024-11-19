@@ -19,6 +19,7 @@ public class MainComida {
 	    	 System.out.println("""
 	    	 		1) Agregar Nueva Comida.
 	    	 		2) Mostrar Comidas.
+	    	 		3) Gestionar Recetas.
 	    	 		0) Salir
 	    	 		""");
 	    	 op = Helper.getInteger("Ingrese Opcion: ");
@@ -27,7 +28,10 @@ public class MainComida {
 						      lc.guardarComida(completarDatos());
 					        break;}
 					case 2: { lc.mostrarComidas();					
-				            break;}					
+				            break;}	
+					case 3:{
+						     MainReceta.Principal();
+					         break;}
 					case 0: {break;}
 					default:
 						throw new IllegalArgumentException("Error en menu cliente...");

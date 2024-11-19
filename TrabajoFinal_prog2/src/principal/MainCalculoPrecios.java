@@ -1,6 +1,7 @@
 package principal;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import Logica.LogicaCliente;
 import Logica.LogicaPedido;
@@ -17,13 +18,16 @@ public class MainCalculoPrecios {
 	public static void calcularPrecioPedido() {
 		
 		int dniCliente = MainCliente.validarDni();
-		Pedido buscarPedido=lp.buscarPedido(dniCliente);
+		//Pedido buscarPedido=lp.buscarPedido(dniCliente);
+		List<Pedido> pedidos=lp.buscarPedidos(dniCliente);
+		for(Pedido buscarPedido: pedidos)
 		if(buscarPedido!=null) {
 			System.out.println("*************PEDIDO*****************");
 			System.out.println("Cliente: "+buscarPedido.getCliente().getNombre());
 		    mostrarPrecioIngredientes(buscarPedido);
 		    System.out.println("************************************");
 		}
+		
 	}
 	
 	private static void mostrarPrecioIngredientes(Pedido pedido) {

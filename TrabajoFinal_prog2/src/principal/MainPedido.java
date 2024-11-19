@@ -23,6 +23,8 @@ public class MainPedido {
 	    	 		1) Agregar Nuevo Pedido.
 	    	 		2) Cancelar Pedido.
 	    	 		3) Mostrar Pedidos.
+	    	 		4) Gestion Cliente.
+	    	 		5) Calculo de precios.
 	    	 		0) Salir.
 	    	 		""");
 	    	 op = Helper.getInteger("Ingrese Opcion: ");
@@ -44,6 +46,11 @@ public class MainPedido {
 					case 3: {
 						    lp.mostrarPedidos();
 			            break;}	
+					case 4: {
+						     MainCliente.menu();
+				             break;	}
+					case 5:{MainCalculoPrecios.calcularPrecioPedido();
+					         break;}
 					case 0: {break;}
 					default:
 						throw new IllegalArgumentException("Error en menu cliente...");
@@ -63,16 +70,16 @@ public class MainPedido {
 	
 	private static Cliente validarCliente() {
 	    Cliente cliente = new Cliente();
-		boolean band=true;
-		while(band) {
-            int dni = MainCliente.validarDni();
-            cliente = lc.buscarCliente(dni);
-            if(cliente!=null)
-            	band=false; 
-            else
-            	System.out.println("Cliente no existe....");
-		}
-		return cliente;
+	    
+        int dni = MainCliente.validarDni();
+        cliente = lc.buscarCliente(dni);
+        if(cliente!=null)
+          	return cliente; 
+        else {
+        	System.out.println("****Nuevo Cliente****");
+        	Cliente cliNuevo = MainCliente.completarDatos();
+        	MainCliente.lc.guardarCliente(cliNuevo);
+          	return cliNuevo;}
 	}
 	
     private static List<Comida> validarComida(){
